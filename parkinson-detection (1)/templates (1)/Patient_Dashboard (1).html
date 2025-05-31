@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health Dashboard</title>
+  <link rel="stylesheet" href="../static/Patient Dashboard.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="header-icons"> <span class="icon1">👤 Welcome {{ user }}</span> </div>
+  </div>
+  <div class="header2"> <a href="{{ url_for('voice_test_page') }}" class="add-record">+ Start Your Test</a> </div>
+  <form action="/logout" method="post"> <button type="submit" class="logout-btn">Logout</button> </form>
+  <div class="grid">
+    <div class="card">
+      <h2>Total Your Tests</h2>
+      <p class="value">{{ total_records }}</p>
+    </div>
+    <div class="card">
+      <h2>Under examination</h2>
+      <p class="value">{{ under_examination_count }}</p>
+    </div>
+    <div class="card">
+      <h2>Checked</h2>
+      <p class="value">{{ checked_count }}</p>
+    </div>
+  </div>
+  <section class="resources-modern">
+    <div class="resources-grid">
+      <div class="resource-card">
+        <div class="resource-icon" style="background-color: #ffe0e0;">
+          <img src="https://cdn-icons-png.flaticon.com/512/3159/3159066.png" alt="Brain Icon" />
+        </div>
+        <h3>Parkinson's Basics</h3>
+        <p>Learn the fundamentals of Parkinson’s disease and how it affects daily life.</p>
+        <a href="https://www.parkinson.org/understanding-parkinsons/what-is-parkinsons" target="_blank">Learn More</a>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-icon" style="background-color: #e0f7ff;">
+          <img src="https://cdn-icons-png.flaticon.com/512/2910/2910796.png" alt="Exercise Icon" />
+        </div>
+        <h3>Exercise Routines</h3>
+        <p>Guided physical activities to help improve balance and strength.</p>
+        <a href="https://www.parkinson.org/living-with-parkinsons/exercise" target="_blank">Try Exercises</a>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-icon" style="background-color: #e0ffe6;">
+          <img src="https://cdn-icons-png.flaticon.com/512/5977/5977589.png" alt="Pill Icon" />
+        </div>
+        <h3>Medication Tips</h3>
+        <p>Discover how to manage medications effectively and consistently.</p>
+        <a href="https://www.michaeljfox.org/news/taking-medication-parkinsons" target="_blank">Medication Guide</a>
+      </div>
+
+      <div class="resource-card">
+        <div class="resource-icon" style="background-color: #f2e0ff;">
+          <img src="https://cdn-icons-png.flaticon.com/512/542/542638.png" alt="Support Icon" />
+        </div>
+        <h3>Community Support</h3>
+        <p>Find support groups and stories from people living with Parkinson’s.</p>
+        <a href="https://www.parkinson.org/Living-with-Parkinsons/Resources-and-Support/PD-Health-at-Home"
+          target="_blank">Join Community</a>
+      </div>
+
+    </div>
+    </div>
+  </section>
+  <script> function toggleTheme() { const body = document.body; const checkbox = document.getElementById("mode-switch"); const icon = document.getElementById("mode-icon"); body.classList.toggle("dark-mode"); icon.textContent = checkbox.checked ? "🌞" : "🌙"; } </script>
+</body>
+
+</html>

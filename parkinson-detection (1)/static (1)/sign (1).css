@@ -1,0 +1,85 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  max-width: 400px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+}
+
+h1 {
+  color: #007bff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select {
+  width: 94%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.button {
+  display: block;
+  width: 94%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  text-align: center;
+}
+.footer-text {
+  display: block;
+  text-align: center;
+  color: #007bff;
+  text-decoration: none;
+  margin: 10px 0;
+}
+.social-media {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.social-icons {
+  display: flex;
+  color: black;
+  background-color: #f0f0f0;
+  width: 30px;
+  height: 50px;
+  border-radius: 25px;
+  text-decoration: none;
+  align-items: center;
+  justify-content: space-around;
+  margin: 5px;
+}
+.soc2 {
+  display: flex;
+  justify-content: center;
+}

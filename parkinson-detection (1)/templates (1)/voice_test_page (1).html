@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Voice Analysis Input</title>
+  <style>
+    * {
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: white;
+    }
+
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .btn {
+      padding: 16px 32px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      color: white;
+      background: linear-gradient(to right, #00bcd4, #3f51b5);
+      transition: transform 0.2s ease;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .modal {
+      background: #ffffffee;
+      border-radius: 20px;
+      max-width: 800px;
+      width: 90%;
+      padding: 30px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .modal h2 {
+      text-align: center;
+      color: #00bcd4;
+      margin-bottom: 20px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      background: transparent;
+      border: none;
+      font-size: 26px;
+      color: #333;
+      cursor: pointer;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="number"],
+    input[type="file"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    button.submit-btn {
+      grid-column: 1 / -1;
+      padding: 14px;
+      margin-top: 20px;
+      background: linear-gradient(to right, #00bcd4, #3f51b5);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .submit-btn {
+      grid-column: 1 / -1;
+      padding: 14px;
+      margin-top: 20px;
+      background: linear-gradient(to right, #00bcd4, #3f51b5);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button.submit-btn:hover {
+      background: linear-gradient(to right, #3f51b5, #00bcd4);
+    }
+
+    @media (max-width: 600px) {
+      .modal {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-content">
+    <h1>Choose Data Input Mode</h1> <button class="btn" onclick="openModal('manual')">📝Enter MDVP Values</button>
+    <button class="btn" onclick="openModal('image')">Upload Spiral Drawing</button>
+  </div> <!-- Modal إدخال يدوي -->
+  <div class="modal-overlay" id="manualModal">
+    <div class="modal"> <button class="close-btn" onclick="closeModal('manual')">×</button>
+      <h2>Enter MDVP Values</h2>
+      <form id="voiceForm"> <!-- input fields will be injected by JS --> </form>
+    </div>
+  </div> <!-- Modal رفع صورة -->
+  <div class="modal-overlay" id="imageModal">
+    <div class="modal"> <button class="close-btn" onclick="closeModal('image')">×</button>
+      <h2>Upload Spiral Drawing</h2>
+      <form id="imageForm">
+        <div class="form-group"> <label for="analysisImage"></label> <input type="file" id="analysisImage" name="image"
+            accept="image/*" required /> </div> <button type="submit" class="submit-btn">Send photo</button>
+        <input class="submit-btn" type="reset" value="reset">
+      </form>
+    </div>
+  </div>
+  <script>
+    const fields = [
+      "MDVP:Fo(Hz)", "MDVP:Fhi(Hz)", "MDVP:Flo(Hz)", "MDVP:Jitter(%)",
+      "MDVP:Jitter(Abs)", "MDVP:RAP", "MDVP:PPQ", "Jitter:DDP",
+      "MDVP:Shimmer", "MDVP:Shimmer(dB)", "Shimmer:APQ3", "Shimmer:APQ5",
+      "MDVP:APQ", "Shimmer:DDA", "NHR", "HNR", "RPDE", "DFA",
+      "spread1", "spread2", "D2", "PPE"
+    ];
+
+    const form = document.getElementById('voiceForm');
+
+    fields.forEach(field => {
+      const div = document.createElement('div');
+      div.className = 'form-group';
+
+      const label = document.createElement('label');
+      label.textContent = field;
+
+      const input = document.createElement('input');
+      input.type = 'any';
+      input.name = field;
+      input.required = true;
+
+      div.appendChild(label);
+      div.appendChild(input);
+      form.appendChild(div);
+    });
+
+    const submitBtn = document.createElement('button');
+    submitBtn.type = 'submit';
+    submitBtn.className = 'submit-btn';
+    submitBtn.textContent = 'View Result';
+    form.appendChild(submitBtn);
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const data = {};
+      const formData = new FormData(form);
+
+      for (let [key, value] of formData.entries()) {
+        data[key] = parseFloat(value);
+      }
+
+      fetch("http://127.0.0.1:5000/predict_mdvp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      })
+        .then(res => res.json())
+        .then(result => {
+          if (result.success) {
+            alert("✅ التشخيص: " + result.prediction + "\n📊 النسبة: " + result.probability);
+          } else {
+            alert("❌ خطأ في التنبؤ: " + result.error);
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          alert("⚠️ فشل الاتصال بالسيرفر");
+        });
+    });
+
+    document.getElementById('imageForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const file = document.getElementById('analysisImage').files[0];
+      if (file) {
+        console.log("📷 تم اختيار الصورة:", file.name);
+        alert('تم رفع الصورة! (شوف الـ Console)');
+      }
+    });
+
+    function openModal(type) {
+      document.getElementById(type + 'Modal').style.display = 'flex';
+    }
+
+    function closeModal(type) {
+      document.getElementById(type + 'Modal').style.display = 'none';
+    }
+  </script>
+
+</body>
+
+</html>

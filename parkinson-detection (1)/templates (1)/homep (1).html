@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/homep.css">
+  <script src="https://kit.fontawesome.com/20a59ce272.js" crossorigin="anonymous"></script>
+  <title>Home</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="logo-container">
+        <img src="../static/Screenshot 2025-03-14 033544.png" alt="Logo" width="50">
+        <a href="../templates/homep.html" class="logo">
+          <p class="p1">Parkinson's</p>
+          <p class="p2">Foundation</p>
+        </a>
+      </div>
+      <div class="search-box">
+        <button onclick="searchFunction()">🔍</button>
+        <input type="text" id="search-input" placeholder="Search...">
+      </div>
+      <a href="{{ url_for('login') }}" class="login-btn">Signin / Login</a>
+    </header>
+    <nav class="top-nav">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#Undp">Understanding Parkinson’s</a></li>
+        <li><a href="#Our-Statistics">Our Statistics</a></li>
+        <li><a href="#Service">Service</a></li>
+        <li><a href="#Clinicians">Our Clinicians</a></li>
+        <li><a href="#hom">How It Works</a></li>
+        <li><a href="#Contact">Contact us</a></li>
+
+      </ul>
+    </nav>
+    <div class="hero-section" id="home">
+      <div class="hero-text">
+        <p class="p3">Get support</p>
+        <p class="p4">We have everything you need to live better with Parkinson's. Support our mission to improve care
+          and advance
+          research
+          toward a cure.</p>
+        <a class="support-btn" href="{{ url_for('login') }}">Find support for you</a>
+      </div>
+
+    </div>
+    <div class="social-icons">
+      <a href="#"><b>f</b></a>
+      <a href="#"><b>X</b></a>
+      <a href="#"><b>in</b></a>
+    </div>
+    <img class="pi1" src="../static/Screenshot 2025-03-16 053419.png" alt="">
+    <div class="Undp" id="Undp">
+      <p class="p5">Understanding Parkinson’s</p>
+      <p class="p6"> There is a lot to know about Parkinson's disease (PD). Learn about its various symptoms, how it
+        is
+        diagnosed,
+        treated,
+        and most importantly, how to live a better life with Parkinson's. Parkinson’s is an individualized disease.
+        While each
+        person’s experience with Parkinson’s is unique, the more you know, the more empowered you will be to play an
+        active role
+        in your care and manage your life with Parkinson’s.</p>
+    </div>
+    <p class="p11" id="Our-Statistics">Our Statistics</p>
+    <div class="wra">
+      <div class="container1">
+        <i class="fa-solid fa-users" style="color:#00bfff;font-size:  2.5em; text-align: center;"></i>
+        <span class="num" data-val="2500">000</span>
+        <span class="text">Users</span>
+      </div>
+      <div class="container1">
+        <i class="fa-solid fa-microphone" style="color:#00bfff;font-size:  2.5em; text-align: center;"></i>
+        <span class="num" data-val="3000">000</span>
+        <span class="text">Records</span>
+      </div>
+      <div class="container1">
+        <i class="fa-solid fa-check" style="color:#00bfff;font-size:  2.5em; text-align: center;"></i>
+        <span class="num" data-val="800">000</span>
+        <span class="text">Successful Cases</span>
+      </div>
+      <div class="container1">
+        <i class="fa-solid fa-percent" style="color:#00bfff;font-size:  2.5em; text-align: center;"></i>
+        <span class="num accuracy" data-val="97">000</span>
+        <span class="text">Accuracy</span>
+      </div>
+    </div>
+
+    <p class="p7" id="Service"> Our Service</p>
+    <div class="section-care-support">
+      <div class="box">
+        <p class="p9">Get Care & Support</p>
+        <img class="img2" src="../static/homepagecare.webp" alt="">
+        <a href="#" class="go">Go Now</a>
+      </div>
+    </div>
+    <p class="p8">"We strive to provide an advanced AI-powered service for analyzing voice patterns to detect early
+      signs of Parkinson's disease. By leveraging cutting-edge technology, we enable users to upload their voice
+      recordings for precise analysis,
+      helping in early diagnosis and better health management."</p>
+
+    <p class="p10" id="Clinicians">Our Clinicians</p>
+    <div class="team-container">
+
+      <div class="team-member">
+        <img src="../static/67777.jpg" alt="Jennie Roberts">
+
+        <h3>Jennie Roberts</h3>
+        <p>Movement Specialist</p>
+
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+
+      <div class="team-member">
+        <img src="../static/tyry.jpg" alt="John Parker">
+        <h3>John Parker</h3>
+        <p>Neurologist</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+
+      <div class="team-member">
+        <img src="../static/2df612c4e1992f701036f697b7bf16e2.jpg" alt="Walter Lilly">
+        <h3>Walter Lilly</h3>
+        <p>Physiotherapist</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <p class="p12">🕒 How It Works</p>
+    <section class="how-it-works" id="how">
+      <h2 style="text-align: center; font-size: 32px; margin-bottom: 50px; color: #2c3e50;">
+      </h2>
+
+      <div class="timeline">
+
+
+        <div class="step">
+          <div style="font-size: 40px; color: #2980b9;">✅</div>
+          <h3 style="font-size: 18px; margin: 10px 0;">Register an account</h3>
+          <p style="font-size: 14px; color: #555;">Start by creating a new account to access the service.</p>
+        </div>
+
+
+        <div class="step">
+          <div style="font-size: 40px; color: #27ae60;">🔬</div>
+          <h3 style="font-size: 18px; margin: 10px 0;">Enter Lap Test</h3>
+          <p style="font-size: 14px; color: #555;">To proceed, please input your laboratory test results.</p>
+        </div>
+
+
+        <div class="step">
+          <div style="font-size: 40px; color: #f39c12;">⏳</div>
+          <h3 style="font-size: 18px; margin: 10px 0;">Wait for the analysis</h3>
+          <p style="font-size: 14px; color: #555;">We analyze the recording using artificial intelligence.</p>
+        </div>
+
+
+        <div class="step">
+          <div style="font-size: 40px; color: #8e44ad;">📊</div>
+          <h3 style="font-size: 18px; margin: 10px 0;">See the result</h3>
+          <p style="font-size: 14px; color: #555;">View case analysis and recommendations.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="footer" id="Contact">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <div class="logo">
+            <span class="logo-letter">P</span>arkinson's Foundation
+          </div>
+          <div class="address">
+            <p>FL: 5757 Waterford District Drive,<br>Ste 310, Miami, FL 33126</p>
+            <p>NY: 1359 Broadway, Ste 1509,<br>New York, NY 10018, USA</p>
+          </div>
+        </div>
+
+        <div class="helpline">
+          <p>Call our Helpline: <strong>1-800-4PD-INFO (473-4636)</strong></p>
+        </div>
+
+        <div class="footer-links">
+          <ul>
+            <li><a href="#">Online Community</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">PD Library</a></li>
+            <li><a href="#">Privacy & Terms</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Supporter Center</a></li>
+          </ul>
+        </div>
+
+        <div class="social-media">
+          <p>Connect with us:</p>
+          <div class="icons">
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let valueDisplays = document.querySelectorAll(".num");
+    let interval = 4000;
+
+    setTimeout(() => {
+      valueDisplays.forEach((valueDisplay) => {
+        let startValue = 0;
+        let endValue = parseInt(valueDisplay.getAttribute("data-val"));
+        let duration = Math.floor(interval / endValue);
+
+        let counter = setInterval(function () {
+          startValue += 1;
+
+          // لو العنصر عنده class "accuracy" نضيف %
+          if (valueDisplay.classList.contains("accuracy")) {
+            valueDisplay.textContent = startValue + "%";
+          } else {
+            valueDisplay.textContent = startValue;
+          }
+
+          if (startValue >= endValue) {
+            clearInterval(counter);
+          }
+        }, duration);
+      });
+    }, 1500);
+
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (!targetElement) return;
+
+        const startPosition = window.pageYOffset;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        const duration = 1200; // زودنا المدة تبقى أبطأ
+        let startTime = null;
+
+        function animationScroll(currentTime) {
+          if (startTime === null) startTime = currentTime;
+          const timeElapsed = currentTime - startTime;
+          const run = ease(timeElapsed, startPosition, targetPosition - startPosition, duration);
+          window.scrollTo(0, run);
+          if (timeElapsed < duration) requestAnimationFrame(animationScroll);
+        }
+
+        function ease(t, b, c, d) {
+          t /= d / 2;
+          if (t < 1) return c / 2 * t * t + b;
+          t--;
+          return -c / 2 * (t * (t - 2) - 1) + b;
+        }
+
+        requestAnimationFrame(animationScroll);
+      });
+    });
+
+  </script>
+
+</body>
+
+</html
